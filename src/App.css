@@ -1,9 +1,15 @@
 #root {
-  max-width: 1280px;
+  max-width: 1980px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
+
+/*#root {*/
+/*  max-width: 1280;*/
+/*  margin: 0 auto;*/
+/*  padding: 2rem;        Было так, если слетит стиль, то вернуть обратно и расширение тоже на 1280
+/*  text-align: center;*/
+/*}*/
 
 .logo {
   height: 6em;

@@ -2,8 +2,8 @@ import React from 'react';
 import {Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger} from "@/components/ui/sheet.jsx";
 import {DragHandleHorizontalIcon, MagnifyingGlassIcon} from "@radix-ui/react-icons";
 import {Button} from "@/components/ui/button.jsx";
-import {Avatar, AvatarImage} from "@radix-ui/react-avatar";
-import Sidebar from "@/page/Home/Navbar/Sidebar.jsx";
+import {Avatar, AvatarFallback, AvatarImage} from "@radix-ui/react-avatar";
+import Sidebar from "@/page/Navbar/Sidebar.jsx";
 
 const Navbar = () => {
     return (
@@ -54,10 +54,14 @@ const Navbar = () => {
                     </Button>
 
                 </div>
-
-
             </div>
-
+            <div>
+                <Avatar>
+                    <AvatarFallback>
+                        Z
+                    </AvatarFallback>
+                </Avatar>
+            </div>
         </div>
     );
 };
