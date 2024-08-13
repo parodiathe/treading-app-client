@@ -1,7 +1,13 @@
 import './App.css'
+import Navbar from "@/page/Home/Navbar/Navbar.jsx";
 
 function App() {
-fsdfsdfsd
+
+    return(
+        <>
+        <Navbar/>
+        </>
+    )
 }
 
 export default App
