@@ -3,6 +3,7 @@ import {ActivityLogIcon, BookmarkIcon, DashboardIcon, ExitIcon, HomeIcon, Person
 import {Button} from "@/components/ui/button.jsx";
 import {SheetClose} from "@/components/ui/sheet.jsx";
 import { CreditCardIcon, LandmarkIcon, WalletIcon } from "lucide-react";
+import {useNavigate} from "react-router-dom";
 
 
 const menu=[
@@ -24,12 +25,6 @@ const menu=[
         name: "Activity",
         path: "/activity",
         icon: <ActivityLogIcon className="h-6 w-6" />
-    },
-
-    {
-        name: "Portfolio",
-        path: "/portfolio",
-        icon: <DashboardIcon className="h-6 w-6" />
     },
 
     {name: "Wallet", path: "/wallet", icon: <WalletIcon /> },
@@ -57,6 +52,11 @@ const menu=[
 ]
 
 const Sidebar = () => {
+
+    const navigate=useNavigate();;
+
+    // const handleNavigate=(value)=>
+
     return (
         <div className='mt-10 space-y-5'>
             {menu.map((item) => (
@@ -65,6 +65,7 @@ const Sidebar = () => {
                         <Button
                             variant="outline"
                             className="flex items-center gap-5 py-6 w-full"
+                            onClick={() => navigate(item.path)}
                         >
                             <span className="w-8">{item.icon}</span>
                             <p>{item.name}</p>
