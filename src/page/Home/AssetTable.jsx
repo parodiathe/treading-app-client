@@ -8,10 +8,10 @@ const AssetTable = () => {
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Coin</TableHead>
-            <TableHead>SYMBOL</TableHead>
-            <TableHead>VOLUME</TableHead>
-            <TableHead>MARKET CAP</TableHead>
-            <TableHead>24h</TableHead>
+            <TableHead className="text-center">SYMBOL</TableHead>
+            <TableHead className="text-center">VOLUME</TableHead>
+            <TableHead className="text-center">MARKET CAP</TableHead>
+            <TableHead className="text-center">24h</TableHead>
             <TableHead className="text-right">PRICE</TableHead>
           </TableRow>
         </TableHeader>
