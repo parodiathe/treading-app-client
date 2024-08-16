@@ -35,7 +35,6 @@ const Activity = () => {
                           </Avatar>
                           <span>Bitcoin</span>
                       </TableCell>
-                      <TableCell>BTC</TableCell>
                       <TableCell className="">$69429</TableCell>
                       <TableCell>1364881428323</TableCell>
                       <TableCell>-0.20009</TableCell>
