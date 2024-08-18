@@ -9,9 +9,12 @@ import {
 import {useForm} from "react-hook-form";
 import {Input} from "@/components/ui/input.jsx";
 import {Button} from "@/components/ui/button.jsx";
-import {DialogClose} from "@/components/ui/dialog.jsx";
+import {useDispatch} from "react-redux";
+import {register} from "@/State/Auth/Action.js";
 
 const SignupForm = () => {
+
+    const dispatch = useDispatch()
 
     const form = useForm({
         resolver:"",
@@ -23,6 +26,7 @@ const SignupForm = () => {
     })
 
     const onSubmit = (data) => {
+        dispatch(register(data))
         console.log(data);
     }
 

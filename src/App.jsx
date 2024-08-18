@@ -13,13 +13,24 @@ import Profile from "@/page/Profile/Profile.jsx";
 import SearchCoin from "@/page/Search/SearchCoin.jsx";
 import Notfound from "@/page/Notfound/Notfound.jsx";
 import Auth from "@/page/Auth/Auth.jsx";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {getUser} from "@/State/Auth/Action.js";
 
 function App() {
 
+    const {auth} = useSelector(store=>store);
+    const dispatch = useDispatch()
+
+    console.log(" auth ---- ", auth)
+
+    useEffect(() => {
+        dispatch(getUser(auth.jwt || localStorage.getItem("jwt")))
+    },[auth.jwt])
+
     return (
         <>
-            <Auth/>
-            {false && <div>
+            {auth.user? <div>
                 <Navbar/>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
@@ -34,7 +45,7 @@ function App() {
                     <Route path="/search" element={<SearchCoin/>}/>
                     <Route path="*" element={<Notfound/>}/>
                 </Routes>
-            </div>}
+            </div> : <Auth/>}
         </>
     )
 }

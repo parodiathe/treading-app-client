@@ -8,8 +8,15 @@ import {
 import {useForm} from "react-hook-form";
 import {Input} from "@/components/ui/input.jsx";
 import {Button} from "@/components/ui/button.jsx";
+import {useDispatch} from "react-redux";
+import {login} from "@/State/Auth/Action.js";
+import {useNavigate} from "react-router-dom";
 
 const SigninForm = () => {
+
+    const dispatch = useDispatch()
+
+    const navigate=useNavigate()
 
     const form = useForm({
         resolver:"",
@@ -20,6 +27,7 @@ const SigninForm = () => {
     })
 
     const onSubmit = (data) => {
+        dispatch(login(data, navigate))
         console.log(data);
     }
 
