@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Button} from "@/components/ui/button.jsx";
 import AssetTable from "@/page/Home/AssetTable.jsx";
 import StockChart from "@/page/Home/StockChart.jsx";
@@ -6,11 +6,22 @@ import {Avatar, AvatarImage} from "@/components/ui/avatar.jsx";
 import {DotIcon, MessageCircle} from "lucide-react";
 import {Cross1Icon} from "@radix-ui/react-icons";
 import { Input } from "@/components/ui/input"
+import {getCoinList, getTop50CoinList} from "@/State/Coin/Action.js";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    Pagination,
+    PaginationContent,
+    PaginationEllipsis,
+    PaginationItem,
+    PaginationLink, PaginationNext, PaginationPrevious
+} from "@/components/ui/pagination.jsx";
 
 const Home = () => {
     const [category, setCategory] = React.useState("all");
     const [inputValue, setInputValue] = React.useState("");
     const [isBotRealease, setIsBotRealease] = React.useState(false);
+    const {coin} = useSelector(store=>store);
+    const dispatch = useDispatch()
 
     const handleBotRealease = () => setIsBotRealease(!isBotRealease);
 
@@ -29,6 +40,15 @@ const Home = () => {
         setInputValue("");
     }
 
+    useEffect(()=>{
+
+        dispatch(getTop50CoinList())
+    },[category])
+
+    useEffect(() => {
+        dispatch(getCoinList(1))
+    },[])
+
     return (
         <div className="relative">
 
@@ -36,7 +56,7 @@ const Home = () => {
                 <div className="lg:w-[50%] lg:border-r">
                     <div className='p-3 flex items-center gap-4'>
                         <Button
-                            onClick={() => setCategory("all")}
+                            onClick={() => handleCategory("all")}
                             variant={category === "all" ? "default" : "outline"}
                             className="rounded-full"
                         >
@@ -44,7 +64,7 @@ const Home = () => {
                         </Button>
 
                         <Button
-                            onClick={() => setCategory("top50")}
+                            onClick={() => handleCategory("top50")}
                             variant={category === "top50" ? "default" : "outline"}
                             className="rounded-full"
                         >
@@ -52,7 +72,7 @@ const Home = () => {
                         </Button>
 
                         <Button
-                            onClick={() => setCategory("topGainers")}
+                            onClick={() => handleCategory("topGainers")}
                             variant={category === "topGainers" ? "default" : "outline"}
                             className="rounded-full"
                         >
@@ -60,18 +80,36 @@ const Home = () => {
                         </Button>
 
                         <Button
-                            onClick={() => setCategory("topLosers")}
+                            onClick={() => handleCategory("topLosers")}
                             variant={category === "topLosers" ? "default" : "outline"}
                             className="rounded-full"
                         >
                             Top Losers
                         </Button>
                     </div>
+                    <AssetTable coin={category==="all"?coin.coinList:coin.top50} category={category} />
+                    <div>
+                        <Pagination>
+                            <PaginationContent>
+                                <PaginationItem>
+                                    <PaginationPrevious href="#" />
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink href="#">1</PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationEllipsis />
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationNext href="#" />
+                                </PaginationItem>
+                            </PaginationContent>
+                        </Pagination>
 
-                    <AssetTable/>
+                    </div>
                 </div>
                 <div className="hidden lg:block lg:w-[50%] p-5">
-                    <StockChart/>
+                    <StockChart coinId={"bitcoin"}/>
 
                     <div className="flex gap-5 items-center">
 

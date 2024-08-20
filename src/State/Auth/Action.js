@@ -29,7 +29,7 @@ export const register = (userData) => async (dispatch)  => {
         console.log(error);
     }
 
-}
+};
 
 export const login =(userData) => async (dispatch)=>{
 
