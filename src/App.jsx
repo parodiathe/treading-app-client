@@ -11,7 +11,6 @@ import StockDetails from "@/page/Stock Details/StockDetails.jsx";
 import Watchlist from "@/page/Watchlist/Watchlist.jsx";
 import Profile from "@/page/Profile/Profile.jsx";
 import SearchCoin from "@/page/Search/SearchCoin.jsx";
-import Notfound from "@/page/Notfound/Notfound.jsx";
 import Auth from "@/page/Auth/Auth.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
