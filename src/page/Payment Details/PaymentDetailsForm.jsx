@@ -2,7 +2,6 @@ import React from 'react';
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -11,22 +10,29 @@ import {
 import {useForm} from "react-hook-form";
 import {Input} from "@/components/ui/input.jsx";
 import {Button} from "@/components/ui/button.jsx";
-import {DialogContent} from "@radix-ui/react-dialog";
 import {DialogClose} from "@/components/ui/dialog.jsx";
+import {useDispatch} from "react-redux";
+import {addPaymentDetails} from "@/State/Withdrawal/Action.js";
 
 const PaymentDetailsForm = () => {
+
+    const dispatch = useDispatch();
 
     const form = useForm({
         resolver:"",
         defaultValues:{
             accountHolderName:"",
-            ifsc:"",
+            inn:"",
             accountNumber:"",
             bankName:""
         }
     })
 
     const onSubmit = (data) => {
+        dispatch(addPaymentDetails({
+            paymentDetails:data,
+            jwt:localStorage.getItem("jwt")
+        }))
         console.log(data);
     }
 
@@ -53,15 +59,15 @@ const PaymentDetailsForm = () => {
 
               <FormField
                   control={form.control}
-                  name="ifsc"
+                  name="inn"
                   render={({ field }) => (
                       <FormItem>
-                          <FormLabel>IFSC Code</FormLabel>
+                          <FormLabel>INN Code</FormLabel>
                           <FormControl>
                               <Input
-                                     // name="ifsc"
+                                     // name="inn"
                                      className="border w-full border-gray-700 p-5"
-                                     placeholder="Your ifsc code" {...field} />
+                                     placeholder="Your INN here" {...field} />
                           </FormControl>
                           <FormMessage />
                       </FormItem>

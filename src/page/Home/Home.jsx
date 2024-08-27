@@ -22,6 +22,7 @@ const Home = () => {
     const [isBotRealease, setIsBotRealease] = React.useState(false);
     const {coin} = useSelector(store=>store);
     const dispatch = useDispatch()
+    const {auth} = useSelector(store=>store)
 
     const handleBotRealease = () => setIsBotRealease(!isBotRealease);
 
@@ -36,8 +37,9 @@ const Home = () => {
     const handleKeyPress=(event)=>{
         if(event.key==="Enter"){
             console.log(inputValue);
+            setInputValue("");
         }
-        setInputValue("");
+
     }
 
     useEffect(()=>{
@@ -73,7 +75,7 @@ const Home = () => {
 
                         <Button
                             onClick={() => handleCategory("topGainers")}
-                            variant={category === "topGainers" ? "default" : "outline"}
+                            variant={category === "topnpGainers" ? "default" : "outline"}
                             className="rounded-full"
                         >
                             Top Gainers
@@ -162,23 +164,23 @@ const Home = () => {
 
                         <div className="self-start pb-5 w-auto">
                             <div className="justify-end self-end px-5 py-2 rounded-md bg-slate-800 w-auto text-left">
-                                <p>Hi, Daniil</p>
-                                <p>you can ask any question</p>
-                                <p>Like, price, market cap extra...</p>
+                                <p>Hi, {auth.user?.fullName}</p>
+                                <p>You can ask any question</p>
+                                <p>Market dynamics, prices, trends...</p>
                             </div>
                         </div>
 
-                        {[1, 1, 1, 1].map((item, i) => (
+                        {[1, 1, 1, 1, 1, 1].map((item, i) => (
                             <div
                                 key={i}
                                 className={`${i % 2 === 0 ? "self-start" : "self-end"} "pb-5 w-auto`}
                             >
                                 {i % 2 === 0 ?
                                     <div className="justify-end self-end px-5 py-2 rounded-md bg-slate-800 w-auto">
-                                        <p>prompt who are you</p>
+                                        <p>How can I help?</p>
                                     </div> : <div
                                         className="justify-end self-end px-5 py-2 rounded-md bg-slate-800 w-auto text-left">
-                                        <p>ans hi, chat bot</p>
+                                        <p>Your Question</p>
                                     </div>}
 
                             </div>
@@ -189,7 +191,7 @@ const Home = () => {
                     <div className="h-[12%] border-t">
                         <Input
                             className="w-full h-full order-none outline-none"
-                            placeholder="write prompt"
+                            placeholder="write your promt"
                             onChange={handleChange}
                             value={inputValue}
                             onKeyPress={handleKeyPress}

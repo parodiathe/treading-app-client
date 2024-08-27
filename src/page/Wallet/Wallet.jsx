@@ -147,12 +147,13 @@ const Wallet = () => {
                 {/*    <UpdateIcon className="h-7 w-7 p-0 cursor-pointer hover:text-gray-400"/>*/}
                 {/*</div>*/}
 
-                <div className="py-5 pt-10">
-                    <div className="flex justify-between items-center">
-                        <h1 className="text-2xl font-semibold">History</h1>
-                        <UpdateIcon className="h-7 w-7 p-0 cursor-pointer hover:text-gray-400"/>
-                    </div>
-                </div>
+                {/*<div className="py-5 pt-10">*/}
+                {/*    <div className="flex justify-between items-center">*/}
+                {/*        <h1 className="text-2xl font-semibold">History</h1>*/}
+                {/*        <UpdateIcon className="h-7 w-7 p-0 cursor-pointer hover:text-gray-400"/>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
+                {/*yes*/}
 
                 <div className="space-y-5">
 

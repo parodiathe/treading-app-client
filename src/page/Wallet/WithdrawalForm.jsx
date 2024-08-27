@@ -2,16 +2,20 @@ import React from 'react';
 import {Input} from "@/components/ui/input.jsx";
 import {Button} from "@/components/ui/button.jsx";
 import {DialogClose} from "@/components/ui/dialog.jsx";
+import {useDispatch, useSelector} from "react-redux";
+import {withdrawalRequest} from "@/State/Withdrawal/Action.js";
 
 const WithdrawalForm = () => {
-
     const [amount, setAmount] = React.useState('');
+    const dispatch = useDispatch();
+    const { wallet, withdrawal } = useSelector(store => store);
 
     const handleChange = (e) => {
         setAmount(e.target.value);
     }
 
     const handleSubmit = () => {
+        dispatch(withdrawalRequest({amount, jwt:localStorage.getItem("jwt")}))
         console.log(amount);
     };
 
@@ -21,7 +25,7 @@ const WithdrawalForm = () => {
         <div className="flex justify-between items-center rounded-md bg-slate-900 text-xl font-bold px-5 py-4">
 
             <p>Available balance</p>
-            <p>$3000</p>
+            <p>{wallet.userWallet.balance}</p>
         </div>
 
         <div className="flex flex-col items-center">
@@ -44,8 +48,8 @@ const WithdrawalForm = () => {
                 <img className="h-8 w-8" src="https://cdn.icon-icons.com/icons2/2104/PNG/512/bank_icon_129525.png" alt=""/>
 
                 <div>
-                    <p className="text-xl font-bold">Tinkoff Bank</p>
-                    <p className="text-xs">************5708</p>
+                    <p className="text-xl font-bold">{withdrawal.paymentDetails?.bankName}</p>
+                    <p className="text-xs">{withdrawal.paymentDetails?.accountNumber}</p>
                 </div>
             </div>
         </div>
