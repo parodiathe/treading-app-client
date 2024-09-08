@@ -61,24 +61,6 @@ const TopupForm = () => {
                         </div>
                     </Label>
                 </div>
-
-                <div className="flex items-center space-x-2 border p-3 px-5 rounded-md">
-
-                    <RadioGroupItem
-                        icon={DotFilledIcon}
-                        className="h-9 w-9"
-                        value="RAZORPAY"
-                        id="r2"
-                    />
-                    <Label htmlFor="r2">
-                        <div className="bg-white rounded-md px-5 w-32">
-                            <img className="h-20" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg" alt=""/>
-
-                        </div>
-
-                    </Label>
-                </div>
-
             </RadioGroup>
         </div>
         <Button onClick={handleSubmit} className="w-full py-7">

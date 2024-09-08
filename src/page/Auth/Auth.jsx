@@ -20,7 +20,7 @@ const Auth = () => {
           items-center h-[35rem] w-[30rem] rounded-md z-50 bg-black
            bg-opacity-50 shadow-2xl shadow-white px-10">
 
-            <h1 className="text-6xl font-bold pb-9">CoolCrypto</h1>
+            <h1 className="text-5xl font-bold pb-9">CryptoTradePro</h1>
 
             {location.pathname==="/signup" ? <section className="w-full">
               <SignupForm/>
